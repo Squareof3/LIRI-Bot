@@ -9,6 +9,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "fs": "0.0.1-security",
     "inquirer": "^3.2.2",
     "request": "^2.81.0",
     "twitter": "^1.7.1"
