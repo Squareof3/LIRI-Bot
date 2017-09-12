@@ -8,17 +8,21 @@ var request = require("request");
 
 var fs = require("fs");
 
+var input1 = process.argv[2];
+var input2 = process.argv.splice(3).join(" ");
+
 function getMyTweets() {
 
     var client = new Twitter(keys.twitterKeys);
 
     var params = {
-        screen_name: 'sadcuzkirito'
+        screen_name: 'sadcuzkirito',
+        count: 20
     };
     client.get('statuses/user_timeline', params, function (error, tweets, response) {
         if (error) {
             throw error
-        } else {
+        } else if (input1 === "my-tweets") {
             for (var i = 0; i < tweets.length; i++) {
                 var date = tweets[i].created_at;
                 console.log("@sadcuzkirito: " + tweets[i].text + " Created At: " + date.substring(0, 19));
@@ -32,6 +36,7 @@ function getMyTweets() {
 
         }
     });
+
 }
 
 getMyTweets()
